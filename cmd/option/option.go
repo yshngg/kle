@@ -172,7 +172,11 @@ func run(ctx context.Context) {
 
 	http.HandleFunc("/ping", func(w http.ResponseWriter, req *http.Request) {
 		pingCounter.Inc()
-		fmt.Fprintf(w, "pong")
+		_, err := fmt.Fprintf(w, "pong")
+		if err != nil {
+			klog.Errorf("failed to write response: %v", err)
+			return
+		}
 	})
 
 	// Expose /metrics HTTP endpoint using the created custom registry.
