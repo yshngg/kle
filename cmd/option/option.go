@@ -58,6 +58,7 @@ type KLEServer struct {
 
 func NewKLEServer() *KLEServer {
 	return &KLEServer{
+		Addr:           ":2190",
 		LeaderElection: *leaderelection.DefaultLeaderElectionConfig(),
 	}
 }
