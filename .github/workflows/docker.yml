@@ -11,7 +11,7 @@ on:
       - "v*.*.*"
   pull_request:
     branches:
-      - 'main'
+      - "main"
 
 # Defines two custom environment variables for the workflow. These are used for the Container registry domain, and a name for the Docker image that this workflow builds.
 env:
@@ -75,11 +75,12 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          outputs: type=image,push-by-digest=true,name-canonical=true,push=${{ github.event_name != 'pull_request' }}
 
       # This step generates an artifact attestation for the image, which is an unforgeable statement about where and how it was built. It increases supply chain security for people who consume the image. For more information, see [Using artifact attestations to establish provenance for builds](/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
-      # - name: Generate artifact attestation
-      #   uses: actions/attest-build-provenance@v2
-      #   with:
-      #     subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
-      #     subject-digest: ${{ steps.push.outputs.digest }}
-      #     push-to-registry: ${{ github.event_name != 'pull_request' }}
+      - name: Generate artifact attestation
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: ${{ github.event_name != 'pull_request' }}
