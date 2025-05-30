@@ -3,6 +3,8 @@ FROM --platform=${BUILDPLATFORM} golang:1.24-alpine AS builder
 
 LABEL maintainer="Yusheng Guo <yshngg@outlook.com>"
 LABEL org.opencontainers.image.source="https://github.com/yshngg/kle"
+LABEL org.opencontainers.image.description="A Kubernetes Leader Election Demo."
+LABEL org.opencontainers.image.licenses=MIT
 
 ARG TARGETOS
 ARG TARGETARCH
