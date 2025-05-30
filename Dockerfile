@@ -32,9 +32,9 @@ RUN go mod download
 COPY . .
 
 # Embed version metadata and build binary
-ARG VERSION="$(git describe --tags --always)"
+ARG VERSION
 RUN set -eux; \
-    VERSION="${VERSION}"; \
+    VERSION="${VERSION:-$(git describe --tags --always)}"; \
     BRANCH="$(git rev-parse --abbrev-ref HEAD)"; \
     SHA1="$(git rev-parse HEAD)"; \
     BUILD="$(date -u +%FT%T%z)"; \
