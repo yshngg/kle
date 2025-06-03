@@ -26,7 +26,7 @@ spec:
                 - demo
               topologyKey: kubernetes.io/hostname
       containers:
-        - image: ghcr.io/yshngg/kle:latest
+        - image: ghcr.io/yshngg/kle:0.1
           imagePullPolicy: Always
           name: kle
           command:
