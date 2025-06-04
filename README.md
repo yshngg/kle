@@ -1,4 +1,4 @@
-# kle
+# kle [![Go Reference](https://pkg.go.dev/badge/github.com/yshngg/kle.svg)](https://pkg.go.dev/github.com/yshngg/kle) [![GitHub Release](https://img.shields.io/github/v/release/yshngg/kle?style=flat-square)](https://github.com/yshngg/kle/releases)
 
 A Kubernetes Leader Election Demo.
 
