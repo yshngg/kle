@@ -14,13 +14,13 @@ jobs:
     permissions: write-all
     steps:
       - name: Setup Node.js Environment
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: "16"
-      - uses: actions/checkout@v3
+          node-version: "20"
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: di-sukharev/opencommit@github-action-v1.0.4
+      - uses: di-sukharev/opencommit@github-action-v3.2.7
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -30,7 +30,6 @@ jobs:
           # for repo secret go to: <your_repo_url>/settings/secrets/actions
           OCO_AI_PROVIDER: deepseek
           OCO_API_KEY: ${{ secrets.OCO_API_KEY }}
-          OCO_OPENAI_API_KEY: ${{ secrets.OCO_API_KEY }}
           OCO_API_URL: https://api.deepseek.com
 
           # customization
