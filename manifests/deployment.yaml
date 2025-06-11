@@ -31,6 +31,7 @@ spec:
           name: kle
           command:
             - /bin/kle
+          args:
             - "--leader-elect"
             - "--leader-elect-namespace=demo"
           resources:
